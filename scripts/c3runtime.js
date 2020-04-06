@@ -830,6 +830,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Behaviors.MoveTo.Cnds.IsMoving,
+		C3.Plugins.Sprite.Acts.MoveToTop,
+		C3.Plugins.Sprite.Acts.SetHeight,
+		C3.Behaviors.MoveTo.Cnds.OnArrived,
 		C3.Behaviors.MoveTo.Acts.SetEnabled,
 		C3.Behaviors.MoveTo.Acts.SetMaxSpeed,
 		C3.Behaviors.MoveTo.Acts.SetAcceleration,
@@ -838,14 +841,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.OnDestroyed,
 		C3.Plugins.System.Exps.time,
 		C3.Behaviors.MoveTo.Acts.SetSpeed,
-		C3.Behaviors.MoveTo.Cnds.OnArrived,
 		C3.Plugins.Audio.Acts.Stop,
 		C3.Behaviors.Rotate.Acts.SetEnabled,
 		C3.Behaviors.Rotate.Cnds.IsEnabled,
 		C3.Behaviors.Rotate.Acts.SetSpeed,
 		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.Sprite.Cnds.CompareHeight,
-		C3.Plugins.Sprite.Acts.SetHeight,
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.TypewriterText,
 		C3.Plugins.Text.Acts.TypewriterFinish,
@@ -960,6 +961,7 @@ self.C3_JsPropNameTable = [
 	{InstantGames: 0},
 	{GooglePlay: 0},
 	{GameCenter: 0},
+	{Sprite6: 0},
 	{BusCreated: 0},
 	{Speed: 0},
 	{IsShooting: 0},
@@ -1227,6 +1229,49 @@ self.C3_JsPropNameTable = [
 		() => 0.2,
 		() => -1,
 		() => 780,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() + f1((-5), 5));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(10, 20);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() / 2);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(0, 360);
+		},
+		() => 0.25,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() + f1((-10), 10));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(15, 25);
+		},
+		() => 0.1,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() + f1((-15), 15));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(20, 30);
+		},
+		() => 0.3,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() + f1((-30), 30));
+		},
 		() => "Controls4",
 		() => "Touch5",
 		() => "Keyboard5",
@@ -1290,6 +1335,47 @@ self.C3_JsPropNameTable = [
 		() => 427,
 		() => "bosssneeze",
 		() => 4,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(1, 1.5);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(10, 350);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(10, 460);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(20, 40);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(550, 840);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(2, 4);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(900, 1200);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(50, 200);
+		},
+		() => -200,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(3, 5);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(200, 370);
+		},
 		() => -257,
 		() => 450,
 		p => {
@@ -1321,10 +1407,6 @@ self.C3_JsPropNameTable = [
 		() => "Step 2",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(900, 1200);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(300, 700);
 		},
 		p => {
@@ -1352,7 +1434,6 @@ self.C3_JsPropNameTable = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (400 - v0.GetValue());
 		},
-		() => 0.1,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * 0.98);
@@ -1384,7 +1465,6 @@ self.C3_JsPropNameTable = [
 		() => 175,
 		() => "WorriedClosed",
 		() => "WorriedOpen",
-		() => 0.3,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0((-1000), 1000);
@@ -1461,8 +1541,7 @@ self.C3_JsPropNameTable = [
 		() => 166,
 		() => 573,
 		() => 235,
-		() => 315,
-		() => 210,
+		() => 330,
 		() => "10",
 		() => 233,
 		() => 141,
@@ -1472,11 +1551,6 @@ self.C3_JsPropNameTable = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 5);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (n0.ExpObject() + f1((-5), 5));
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -1495,28 +1569,14 @@ self.C3_JsPropNameTable = [
 		() => 375,
 		() => "3o",
 		() => "Nooo!!!",
-		() => "4o",
-		() => "Although the Vaccinator is just a game, there are thousands of medical professionals around the world working hard to fight against this virus.\n\nThere are many who don't have the proper supplies and protection to protect themselves and are putting their lives at risk to help others.\n\nIf you can, donate to your local hospital to provide supplies and protection for all of the doctors, nurses and medical staff working to stop the spread of of COVID-19.\n\nIf you can't donate, do your part to prevent the spread by staying home and when the vaccine does come out, get vaccinated!",
-		() => 31.5,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(4, 7);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0((-250), (-750));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(150, 460);
-		},
+		() => "Thanks for Playing",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(0.1, 0.5);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(10, 460);
+			return () => f0((-250), (-750));
 		},
 		() => 240,
 		() => "needle",
